@@ -117,7 +117,7 @@ def rss_monitor(context):
                     feed_urls.insert(0, rss_d.entries[feed_count]['link'])
                     feed_count += 1
                 for x in range(len(feed_urls)):
-                    feed_info = f"{CUSTOM_MESSAGES}\n<b>{feed_titles[x]}</b>\n{feed_urls[x]}"
+                    feed_info = f"{CUSTOM_MESSAGES} {feed_urls[x]}\n\n<b>Title:</b> {feed_titles[x]}"
                     context.bot.send_message(CHAT_ID, feed_info, parse_mode='HTMl')
                 # overwrite the existing item with the latest item
                 postgres.update(str(rss_d.entries[0]['link']), name, str(rss_d.entries[0]['title']))
